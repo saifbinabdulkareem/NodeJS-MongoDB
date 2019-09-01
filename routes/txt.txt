@@ -1,0 +1,35 @@
+The application should be done in Ionic 4.
+We need a PWA not an app to download from apple store or google store.
+The flow is the following
+1. User receives a private invite link via email, social media etc ...
+2. User clicks on private link.
+3. User starts survey, without registration
+
+
+
+router.post('/getNameUsers', (req, resp) => {
+    const name = req.body.name
+    const users = Users.find({ name })
+    users.then((allUsers) => {
+        resp.send({ result: allUsers })
+    })
+        .catch(e => {
+            resp.send({ message: e.message })
+        })
+})
+
+-------------------------------------------------------------
+
+fetch('/users/getUser', {
+	method: 'POST',
+	headers: {
+		'Content-type': 'application/json'
+    },
+		body: JSON.stringify({email:"admin@gmail.com"})
+})
+		.then((res)=>{
+		res.json()
+		.then(res=>console.log(res))
+
+}
+)
